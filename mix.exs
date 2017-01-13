@@ -29,7 +29,7 @@ defmodule Onemorebot.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:slack, "~> 0.9.2"},
+    [{:slack, git: "https://github.com/spartansystems/Elixir-Slack.git"},
      {:cowboy, "~> 1.0.0"},
      {:plug, "~> 1.0"},
      {:distillery, "~> 0.9"}]

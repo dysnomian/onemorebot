@@ -1,9 +1,7 @@
 defmodule Onemorebot.SlackRtm do
   use Slack
-  require Logger
 
-  def handle_event(message = %{type: "message"}, slack, state) do
-    Logger.info "Message received: #{message.user}: #{message.text}"
+  def handle_message(message = %{type: "message"}, slack, state) do
     if Regex.run ~r/<@#{slack.me.id}>:?\sping/, message.text do
       send_message("<@#{message.user}> pong",
         message.channel, slack)
@@ -12,7 +10,7 @@ defmodule Onemorebot.SlackRtm do
   end
 
   # Catch all message handler so we don't crash
-  def handle_event(_message, _slack, state) do
+  def handle_message(_message, _slack, state) do
     {:ok, state}
   end
 end
