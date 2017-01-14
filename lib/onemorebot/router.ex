@@ -1,5 +1,7 @@
 defmodule Onemorebot.Router do
   use Plug.Router
+  require Logger
+
   plug Plug.Parsers, parsers: [:urlencoded]
   plug :match
   plug :dispatch
