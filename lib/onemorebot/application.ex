@@ -15,9 +15,9 @@ defmodule Onemorebot.Application do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(Slack.Bot, [Onemorebot.SlackRtm, [], token()])
-      # Plug.Adapters.Cowboy.child_spec(:http, Onemorebot.Router, [],
-        # [port: 4000])
+      worker(Slack.Bot, [Onemorebot.SlackRtm, [], token()]),
+      Plug.Adapters.Cowboy.child_spec(:http, Onemorebot.Router, [],
+        [port: 4000])
      ]
 
     opts = [strategy: :one_for_one, name: Onemorebot.Supervisor]

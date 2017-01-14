@@ -7,11 +7,12 @@ defmodule Onemorebot.Router do
   # Slack will periodically send get requests
   # to make sure the bot is still alive.
   get "/" do
+    Logger.info "Request info: #{inspect conn}"
     send_resp(conn, 200, "")
   end
 
   post "/" do
-    IO.inspect conn
+    Logger.info "Request info: #{inspect conn}"
     %{"text" => text} = conn.params
     send_resp(conn, 200, text)
   end
